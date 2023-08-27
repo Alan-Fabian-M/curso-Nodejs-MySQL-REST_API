@@ -1,14 +1,20 @@
-import expres from 'express'
+import express from 'express'
+import {pool} from './db.js';
 
-const app = expres()
+const app = express()
 
-app.get('/employees', (req,res)=>res.send('Obteniendo empleados'))
+app.get('/ping', async (req,res)=>{
+    const [result] = await pool.query('SELECT "PONG" AS result') 
+    res.json(result[0])
+});
 
-app.post('/employees', (req,res)=>res.send('creando empleados'))
+app.get('/employees', (req,res)=>res.send('Obteniendo empleados'));
 
-app.put('/employees', (req,res)=>res.send('actualizando empleados'))
+app.post('/employees', (req,res)=>res.send('creando empleados'));
 
-app.delete('/employees', (req,res)=>res.send('eliminando empleados'))
+app.put('/employees', (req,res)=>res.send('actualizando empleados'));
+
+app.delete('/employees', (req,res)=>res.send('eliminando empleados'));
 
 
 

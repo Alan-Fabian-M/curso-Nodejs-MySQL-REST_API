@@ -10,3 +10,10 @@ CREATE TABLE employee(
 );
 
 DESCRIBE desployee;
+
+INSERT INTO employee VALUES
+    (1,'Joe', 1000),
+    (2,'Henry', 1000),
+    (3,'Sam', 1000),
+    (4,'Max', 1000);
+    
